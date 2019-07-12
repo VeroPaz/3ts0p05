@@ -27,7 +27,7 @@ namespace Bot1.Bots
             {
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"Hola, Bienvenido!!"), cancellationToken);
+                    await turnContext.SendActivityAsync(MessageFactory.Text($"Bienvenido a Bot Crear Ticket Service"), cancellationToken);
                 }
             }
 

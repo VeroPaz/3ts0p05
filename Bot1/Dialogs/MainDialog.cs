@@ -51,17 +51,17 @@ namespace Bot1.Dialogs
             return await stepContext.PromptAsync(nameof(ChoicePrompt),
                 new PromptOptions
                 {
-                    Prompt = MessageFactory.Text("Please enter your mode of transport."),
-                    Choices = ChoiceFactory.ToChoices(new List<string> { "Car", "Bus", "Bicycle" }),
+                    Prompt = MessageFactory.Text("Seleccione una opción"),
+                    Choices = ChoiceFactory.ToChoices(new List<string> { "1", "2", "3" }),
                 }, cancellationToken);
       
         }
 
         private async Task<DialogTurnResult> ActStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            stepContext.Values["transport"] = ((FoundChoice)stepContext.Result).Value;
+            stepContext.Values["seleccion"] = ((FoundChoice)stepContext.Result).Value;
 
-            return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = MessageFactory.Text("Please enter your name.") }, cancellationToken);
+            return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = MessageFactory.Text("Por favor, ingresa tu nombre.") }, cancellationToken);
             
         }
 
@@ -72,10 +72,10 @@ namespace Bot1.Dialogs
             
             var userProfile = await _userProfileAccessor.GetAsync(stepContext.Context, () => new UserProfile(), cancellationToken);
 
-                userProfile.Transport = (string)stepContext.Values["transport"];
+                userProfile.Seleccion = (string)stepContext.Values["seleccion"];
                 userProfile.Name = (string)stepContext.Values["name"];               
 
-                var msg = $"I have your mode of transport as {userProfile.Transport} and your name as {userProfile.Name}.";
+                var msg = $"La selección fue: {userProfile.Seleccion} y tu nombre es: {userProfile.Name}.";
               
                 await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
            

@@ -11,7 +11,7 @@ namespace Bot1
     public class ConfigurationCredentialProvider : SimpleCredentialProvider
     {
         public ConfigurationCredentialProvider(IConfiguration configuration)
-            : base(configuration["MicrosoftAppId"], configuration["MicrosoftAppPassword"])
+            : base(configuration[""], configuration[""])
         {
         }
     }

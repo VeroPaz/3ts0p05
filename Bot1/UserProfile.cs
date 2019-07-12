@@ -8,7 +8,7 @@ namespace Bot1
     public class UserProfile
     {
 
-        public string Transport { get; set; }
+        public string Seleccion { get; set; }
 
         public string Name { get; set; }
 
